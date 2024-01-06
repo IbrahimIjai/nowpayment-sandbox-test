@@ -12,11 +12,8 @@ export default function Home() {
       body:{
         "price_amount": 3999.5,
         "price_currency": "usd",
-        "pay_amount": 0.8102725,
-        "pay_currency": "btc",
-        "ipn_callback_url": "https://main--endearing-cucurucho-f39419.netlify.app",
-        "order_id": "RGDBP-21314",
-        "order_description": "Apple Macbook Pro 2019 x 1"
+        "pay_currency": "eth",
+        "order_description": "testing"
       }
       })
       .then((res) => console.log(res)).catch((err)=>console.log(err));
