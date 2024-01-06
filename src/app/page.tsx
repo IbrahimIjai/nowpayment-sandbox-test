@@ -6,7 +6,6 @@ export default function Home() {
     await axios
       .post("https://api-sandbox.nowpayments.io/v1/payment", {
         headers: {
-          Authorization: "Bearer token",
           "Content-Type": "application/json",
           "x-api-key": "9N1SHKR-QJN4BVB-J5CGTM6-2RSW8XA",
         },
@@ -15,7 +14,7 @@ export default function Home() {
         "price_currency": "usd",
         "pay_amount": 0.8102725,
         "pay_currency": "btc",
-        "ipn_callback_url": "http://localhost:3000",
+        "ipn_callback_url": "https://main--endearing-cucurucho-f39419.netlify.app",
         "order_id": "RGDBP-21314",
         "order_description": "Apple Macbook Pro 2019 x 1"
       }
