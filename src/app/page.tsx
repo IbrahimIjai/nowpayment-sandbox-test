@@ -2,14 +2,36 @@
 import axios from "axios";
 import EmailTemplate from "@/components/email-template";
 export default function Home() {
-  const testapi = async () => {
+  const createInvoice = async () => {
     await axios
       .post(
         "https://api-sandbox.nowpayments.io/v1/invoice",
         {
-          price_amount: 3999.5,
+          price_amount: 1000,
           price_currency: "usd",
-          order_description: "testing",
+          order_description: "Apple Macbook Pro 2019 x 1",
+          ipn_callback_url:
+            "https://main--endearing-cucurucho-f39419.netlify.app/hello",
+          success_url:
+            "https://main--endearing-cucurucho-f39419.netlify.app/hello",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "W5N96HH-10GM2YZ-QPGXR0C-VZSAY5F",
+          },
+        },
+      )
+      .then((res) => console.log(res.data.id))
+      .catch((err) => console.log(err));
+  };
+  const createInvoicePayment = async () => {
+    await axios
+      .post(
+        "https://api-sandbox.nowpayments.io/v1/invoice-payment",
+        {
+          iid: "4629152584",
+          pay_currency: "eth",
         },
         {
           headers: {
@@ -23,8 +45,9 @@ export default function Home() {
   };
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div onClick={testapi}>test api</div>
-      <EmailTemplate
+      <button className="border p-3 rounded-md" onClick={createInvoice}>createInvoice</button>
+      <button className="border p-3 rounded-md" onClick={createInvoicePayment}>createInvoicePayment</button>
+      {/* <EmailTemplate
         payment_id="1234567890"
         payment_status="confirmed"
         pay_address="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
@@ -45,7 +68,7 @@ export default function Home() {
         time_limit="null"
         burning_percent="null"
         expiration_estimate_date="2024-01-06T21:24:00.000Z"
-      />
+      /> */}
     </main>
   );
 }
