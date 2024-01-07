@@ -15,7 +15,7 @@ export default function Home() {
           price_amount: 1000,
           price_currency: "usd",
           order_description: JSON.stringify(data),
-          ipn_callback_url: "https://nowpayment-sandbox-test.vercel.app//hello",
+          ipn_callback_url: "https://nowpayment-sandbox-test.vercel.app/hello",
         },
         {
           headers: {
@@ -24,7 +24,7 @@ export default function Home() {
           },
         },
       )
-      .then((res) => console.log(res.data.id))
+      .then((res) => console.log(res.data.id, "\n", res.data))
       .catch((err) => console.log(err));
   };
   const createInvoicePayment = async () => {
