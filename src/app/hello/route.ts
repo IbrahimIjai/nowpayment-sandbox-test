@@ -6,32 +6,14 @@ export async function POST(req: Request) {
   const body = await req.json();
   console.log("this is body", body);
   const resend = new Resend("re_N7krBaY6_9yeW9hjppYAm4PPJzQpuLqgU");
-  const { payment_id, payment_status, pay_address, order_description } = body;
+  const { payment_id, order_description } = body;
   let res = await resend.emails.send({
     from: "onboarding@resend.dev",
     to: "sunday.m1701072@st.futminna.edu.ng",
     subject: "Hello World",
     react: EmailTemplate({
       payment_id,
-      payment_status,
-      pay_address,
-      price_amount: "1000",
-      price_currency: "USD",
-      pay_amount: "0.02",
-      pay_currency: "BTC",
-      order_id: "ABC-123",
       order_description,
-      created_at: "2024-01-06T20:24:00.000Z",
-      updated_at: "2024-01-06T20:25:00.000Z",
-      purchase_id: "0987654321",
-      amount_received: "0.02",
-      payin_extra_id: "null",
-      smart_contract: "",
-      network: "BTC",
-      network_precision: "8",
-      time_limit: "null",
-      burning_percent: "null",
-      expiration_estimate_date: "2024-01-06T21:24:00.000Z",
     }),
   });
 
