@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import EmailTemplate from "@/components/email-template";
+
 export default function Home() {
   let data = {
     recipient: "steveola23@gmail.com",
