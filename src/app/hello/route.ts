@@ -7,6 +7,8 @@ export async function POST(req: Request) {
   console.log("this is body", body);
   const resend = new Resend("re_N7krBaY6_9yeW9hjppYAm4PPJzQpuLqgU");
   const { payment_id, order_description } = body;
+
+  console.log(order_description)
   let res = await resend.emails.send({
     from: "onboarding@resend.dev",
     to: "sunday.m1701072@st.futminna.edu.ng",
