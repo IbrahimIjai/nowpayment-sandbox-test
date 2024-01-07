@@ -2,6 +2,11 @@
 import axios from "axios";
 import EmailTemplate from "@/components/email-template";
 export default function Home() {
+  let data = {
+    recipient: "steveola23@gmail.com",
+    data: { size: 1, price: 6, type: "lte" },
+    order_id: "fglXiHYK1J",
+  };
   const createInvoice = async () => {
     await axios
       .post(
@@ -9,10 +14,8 @@ export default function Home() {
         {
           price_amount: 1000,
           price_currency: "usd",
-          order_description: "Apple Macbook Pro 2019 x 1",
+          order_description: JSON.stringify(data),
           ipn_callback_url:
-            "https://main--endearing-cucurucho-f39419.netlify.app/hello",
-          success_url:
             "https://main--endearing-cucurucho-f39419.netlify.app/hello",
         },
         {
@@ -45,8 +48,12 @@ export default function Home() {
   };
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <button className="border p-3 rounded-md" onClick={createInvoice}>createInvoice</button>
-      <button className="border p-3 rounded-md" onClick={createInvoicePayment}>createInvoicePayment</button>
+      <button className="border p-3 rounded-md" onClick={createInvoice}>
+        createInvoice
+      </button>
+      <button className="border p-3 rounded-md" onClick={createInvoicePayment}>
+        createInvoicePayment
+      </button>
       {/* <EmailTemplate
         payment_id="1234567890"
         payment_status="confirmed"
