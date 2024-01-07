@@ -15,8 +15,7 @@ export default function Home() {
           price_amount: 1000,
           price_currency: "usd",
           order_description: JSON.stringify(data),
-          ipn_callback_url:
-            "https://main--endearing-cucurucho-f39419.netlify.app/hello",
+          ipn_callback_url: "https://nowpayment-sandbox-test.vercel.app//hello",
         },
         {
           headers: {
