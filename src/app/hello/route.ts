@@ -2,10 +2,11 @@ import EmailTemplate from "@/components/email-template";
 import { Resend } from "resend";
 
 export async function POST(req: Request) {
-  const {payment_id, payment_status, pay_address, order_description} = await req.json();
-  console.log(await req.json());
+  // const {payment_id, payment_status, pay_address, order_description} = await req.json();
+  const body = await req.json();
+  console.log("this is body", body);
   const resend = new Resend("re_N7krBaY6_9yeW9hjppYAm4PPJzQpuLqgU");
-
+  const { payment_id, payment_status, pay_address, order_description } = body;
   let res = await resend.emails.send({
     from: "onboarding@resend.dev",
     to: "sunday.m1701072@st.futminna.edu.ng",
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
       pay_amount: "0.02",
       pay_currency: "BTC",
       order_id: "ABC-123",
-      order_description ,
+      order_description,
       created_at: "2024-01-06T20:24:00.000Z",
       updated_at: "2024-01-06T20:25:00.000Z",
       purchase_id: "0987654321",
